@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Balo TV</title>
+  <title>Balo TV - Scheduled Programming</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,29 +10,78 @@
   <header>
     <h1>📺 Balo TV</h1>
     <nav>
-      <a href="#channel1">Channel 1</a>
-      <a href="#channel2">Channel 2</a>
+      <a href="#channel1">Live Channel</a>
     </nav>
   </header>
 
   <main>
     <section id="channel1" class="channel">
-      <h2>Channel 1 - News</h2>
+      <h2 id="program-title">Current Show</h2>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/BaW_jenozKc" frameborder="0" allowfullscreen></iframe>
+        <iframe 
+          id="videoFrame"
+          width="100%" 
+          height="100%" 
+          frameborder="0" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen>
+        </iframe>
       </div>
-    </section>
-
-    <section id="channel2" class="channel">
-      <h2>Channel 2 - Entertainment</h2>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+      <div class="bio">
+        <h3>About This Channel</h3>
+        <p>This is your 24-hour entertainment hub. Programming changes automatically depending on the time of day.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Balo TV. Powered by YouTube + GitHub Pages</p>
+    <p>&copy; 2025 Balo TV. All rights reserved.</p>
   </footer>
+
+  <script>
+    const programs = [
+      {
+        title: "Morning Cartoons",
+        startHour: 6,
+        endHour: 12,
+        playlist: "PL8W_paC7-AOuHLHtxjVGMRaeEVFdqpoix"
+      },
+      {
+        title: "Afternoon Education",
+        startHour: 12,
+        endHour: 18,
+        playlist: "PL8W_paC7-AOtTlt5kzJXexdirvM5HGIHf"
+      },
+      {
+        title: "Evening Music",
+        startHour: 18,
+        endHour: 24,
+        playlist: "PL8W_paC7-AOs-YVLrcN1rw_MhozUIoESZ"
+      },
+      {
+        title: "Late Night Chill",
+        startHour: 0,
+        endHour: 6,
+        playlist: "PL8W_paC7-AOvQSWZPc_uM4RyOHylSsYO_"
+      }
+    ];
+
+    function getCurrentProgram() {
+      const now = new Date();
+      const hour = now.getHours();
+      return programs.find(p => hour >= p.startHour && hour < p.endHour);
+    }
+
+    function loadProgram() {
+      const program = getCurrentProgram();
+      const iframe = document.getElementById("videoFrame");
+      const title = document.getElementById("program-title");
+
+      title.textContent = program.title;
+      iframe.src = `https://www.youtube.com/embed/videoseries?list=${program.playlist}&autoplay=1&loop=1&playlist=${program.playlist}`;
+    }
+
+    window.onload = loadProgram;
+  </script>
 </body>
 </html>
