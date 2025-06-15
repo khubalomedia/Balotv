@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Balo TV - Scheduled Programming</title>
+  <title>Balo TV - Shuffle Mode</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -29,7 +29,7 @@
       </div>
       <div class="bio">
         <h3>About This Channel</h3>
-        <p>This is your 24-hour entertainment hub. Programming changes automatically depending on the time of day.</p>
+        <p>This is your 24-hour entertainment hub. Programming changes automatically depending on the time of day. Now with shuffled playlists for a live TV feel!</p>
       </div>
     </section>
   </main>
@@ -78,7 +78,7 @@
       const title = document.getElementById("program-title");
 
       title.textContent = program.title;
-      iframe.src = `https://www.youtube.com/embed/videoseries?list=${program.playlist}&autoplay=1&loop=1&playlist=${program.playlist}`;
+      iframe.src = `https://www.youtube.com/embed/videoseries?list=${program.playlist}&autoplay=1&loop=1&shuffle=1&mute=0`;
     }
 
     window.onload = loadProgram;
