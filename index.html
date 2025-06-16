@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,7 @@
 </head>
 <body>
   <header>
-    <header>
-      <img src="balotv-logo-1.png" alt="Balo TV Logo">
-    </header>
+    <img src="balotv-logo-1.png" alt="Balo TV Logo">
     <nav>
       <a href="#channel1">Live Channel</a>
     </nav>
@@ -20,6 +19,7 @@
     <section id="channel1" class="channel">
       <h2 id="program-title">Current Show</h2>
       <div class="video-container">
+        <div id="loadingMessage">Loading Balo TV...</div>
         <iframe 
           id="videoFrame"
           width="100%" 
@@ -78,8 +78,12 @@
       const program = getCurrentProgram();
       const iframe = document.getElementById("videoFrame");
       const title = document.getElementById("program-title");
+      const loading = document.getElementById("loadingMessage");
 
       title.textContent = program.title;
+      loading.style.display = "block";
+
+      iframe.onload = () => loading.style.display = "none";
       iframe.src = `https://www.youtube.com/embed/videoseries?list=${program.playlist}&autoplay=1&loop=1&shuffle=1&mute=0`;
     }
 
