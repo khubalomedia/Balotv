@@ -89,7 +89,7 @@
       loading.style.display = "block";
 
       iframe.onload = () => loading.style.display = "none";
-      iframe.src = `https://www.youtube.com/embed/videoseries?list=${program.playlist}&autoplay=1&loop=1&shuffle=1&mute=0`;
+      iframe.src = `https://www.youtube.com/embed/videoseries?list=${program.playlist}&autoplay=1&loop=1&shuffle=1&mute=0&rel=0&modestbranding=1&showinfo=0&controls=1`;
     }
 
     window.onload = loadProgram;
