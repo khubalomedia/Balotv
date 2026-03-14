@@ -1,7 +1,7 @@
 {
   "name": "Balo TV",
   "short_name": "BaloTV",
-  "start_url": "/Kb/",
+  "start_url": "/balotv/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
